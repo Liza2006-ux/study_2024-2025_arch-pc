@@ -136,14 +136,21 @@ header-includes:
 лишние файлы.
 Затем посмотрела текст изменений на предмет соответствия правилам
 ведения чистых коммитов: git diff
+![1lab03](https://github.com/user-attachments/assets/6f5a8b90-d681-465e-8b0c-a8b4ba86b64b)
+
+![2lab03](https://github.com/user-attachments/assets/596b8123-29e4-4f47-9223-56606eba8e62)
 
 Используя команды добавления и/или удаления с нужными опциями:
 git add имена_файлов git rm имена_файлов я пометила файлы, которые не
 должны попасть в комитет.
+![3lab03](https://github.com/user-attachments/assets/ada8f3a0-7bbb-4cee-b9f9-86b984b6e5bc)
+
 Git add позволяет сохранить все файлы в каталоге . Затем сохранила
 изменения, поясняя, что было сделано: git commit -am "Some commit message"
 и отправила в центральный репозиторий: git push origin имя_ветки или git
 push.
+![4lab03](https://github.com/user-attachments/assets/526bc8e4-50ad-4a83-b2e3-00d2563cf452)
+![5lab03](https://github.com/user-attachments/assets/98d9737a-3c14-4405-83e7-ad414fb6626f)
 
 Сначала я сделала предварительную конфигурацию git, затем открыла
 терминал и ввеласледующие команды, указав имя и email владельца
@@ -156,9 +163,16 @@ core.quotepath false.
 init.defaultBranch master.
 Параметр autocrlf: git config --global core.autocrlf input
 Параметр safecrlf: git config --global core.safecrlf warn
+
+![6lab03](https://github.com/user-attachments/assets/37ea3bb8-f9e8-4f23-bb37-d6162ff3918d)
+
 Для идентификации пользователя на сервере репозиториев
 cutythbhjdfkf пару ключей (приватный и открытый): ssh-keygen -C "Liza2006-
 ux liza.volchkova.s7@gmail.com".
+![7lab03](https://github.com/user-attachments/assets/3da22b9c-4915-4d0b-a042-ec335b50fe93)
+![8lab03](https://github.com/user-attachments/assets/9924328e-7ec3-4ab6-8ed1-4a923443dea2)
+![9lab03](https://github.com/user-attachments/assets/e5299836-0a87-46b0-909b-03cd1a67eea0)
+![10lab03](https://github.com/user-attachments/assets/6c51241c-6bce-4ab6-b1f1-8c40983bd31c)
 
 Потом загрузила сгенерённый открытый ключ.
 Зашла на сайт http: //github.org/ под своей учётной записью и перешла в
@@ -170,21 +184,29 @@ ux liza.volchkova.s7@gmail.com".
 
 Открыла терминал и создала каталог для предмета «Архитектура
 компьютера»: mkdir -p ~/work/study/2023-2024/"Архитектура компьютера".
+![11lab03](https://github.com/user-attachments/assets/e626f8dd-1d0d-4bae-b44f-9e389c429081)
+
 Репозиторий на основе шаблона создала через web-интерфейс github.
 Перейдя на станицу репозитория с шаблоном курса
 https://github.com/yamadharma/cour se-directory-student-template.
+
 Далее выбрала Use this template, в открывшемся окне задала имя
 репозитория (Repository name) study_2023–2024_arhpc и создаларепозиторий
 (кнопка Create repository from template).
+![12lab03](https://github.com/user-attachments/assets/7c2778b8-9f6d-42b7-aed1-8b8fec8f3ae6)
 
 Открыла терминал и перешла в каталог курса: cd ~/work/study/2023–
 2024/"Архитектура компьютера" клонировала е созданный репозиторий: git
 clone --recursive git@github.com:/study_2023–2024_arh-pc.git ↪ arch-pc
 Ссылку для клонирования скопировала на странице созданного репозитория
 Code -> SSH:
+![13lab03](https://github.com/user-attachments/assets/2c0346a8-c1c4-46d3-ad48-d79bf00a3d20)
+
 Потом перешла в каталог курса: cd ~/work/study/2023-
 2024/"Архитектура компьютера"/arch-pc, затемудалилалишние файлы: rm
 package.json
+![14lab03](https://github.com/user-attachments/assets/5b65e300-f567-4a24-a17b-1c5009076605)
+
 Сoздала необходимые каталоги: echo arch-pc > COURSE make,
 отпраивла файлы на сервер: git add . git commit -am 'feat(main): make course
 structure' git pus, потом проверила правильность создания иерархии рабочего
