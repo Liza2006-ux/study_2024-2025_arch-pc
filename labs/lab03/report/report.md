@@ -107,7 +107,7 @@ header-includes:
 
 # Выполнение лабораторной работы
 
-![flower](https://github.com/user-attachments/assets/f343b6bb-9076-404b-98e1-95f87877f5f2)
+![flower](image/flower.jpg)
 
 Описываются проведённые действия, в качестве иллюстрации даётся ссылка на иллюстрацию (рис. [-@fig:001]).
 
