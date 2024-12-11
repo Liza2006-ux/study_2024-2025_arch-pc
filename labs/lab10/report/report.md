@@ -147,7 +147,7 @@ touch lab10-1.asm readme-1.txt readme-2.txt
 1.txt представленные в символьном виде, а для файла readme-2.txt – в двочном виде.
 Проверила правильность выполнения с помощью команды ls -
 
-![7lab10](https://github.com/user-attachments/assets/7be0d2c9-6073-4efc-83b8-1e8c1801a99b)
+![7lab10](./image/7lab10.jpg)
 
 Выполненение самостоятельной работы:
 
