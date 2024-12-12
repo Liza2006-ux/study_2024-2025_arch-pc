@@ -156,6 +156,9 @@ touch lab10-1.asm readme-1.txt readme-2.txt
 ![9lab10](./image/9lab10.jpg)
 ![10lab10](./image/10lab10.jpg)
 
+![11lab10](./image/11lab10.jpg)
+
+
 
 # Выводы
 
