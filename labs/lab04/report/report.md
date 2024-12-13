@@ -99,11 +99,13 @@ hello.asm с именем lab4.asm
 
 Я воспользовалась командой “mov” – команда пересылкиданныхнаязыке ассемблера. Возвела “Hello world!” - на экран. Команда mov переносит данные.
 
-![image](./image/1lab04.jpg)
 
+
+![1lab04](1lab04.jpg)
 
 Создала каталог для работы с программами на языке ассемблераNASM:mkdir -p ~/work/arch-pc/lab04
 Затем перешла в созданный каталог cd ~/work/arch-pc/lab04Далее создала текстовый файл с именем hello.asmtouch hello.asm
+![2lab04](2lab04.jpg)
 
 Открыла этот файл с помощью текстового редактора, например, geditgedit hello.asm и ввела в него следующий текст: ; hello.asmSECTION.data;Начало секции данных hello: DB 'Hello world!',10 ; 'Helloworld!' плюс;символ перевода строки helloLen: EQU $-hello ;
 Длина строки hello SECTION .text ; Начало секции кода GLOBAL_start_start: ;
@@ -117,6 +119,7 @@ hello.asm с именем lab4.asm
 8Ввела полный вариант командной строки:
 Выполнила следующую команду: nasm -o obj.o -f elf -g -l list.lst hello.asm
 
+![3lab04](3lab04.jpg)
 
 С помощью команды ls проверила, что файлы были созданы.
 Далее выполнила следующую команду: ld -melf_i386 obj.o-omain
