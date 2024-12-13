@@ -101,11 +101,13 @@ hello.asm с именем lab4.asm
 
 
 
-![1lab04](1lab04.jpg)
+
+![1lab04](https://github.com/user-attachments/assets/78c05eb0-297f-434b-b142-87fe47ce9233)
 
 Создала каталог для работы с программами на языке ассемблераNASM:mkdir -p ~/work/arch-pc/lab04
 Затем перешла в созданный каталог cd ~/work/arch-pc/lab04Далее создала текстовый файл с именем hello.asmtouch hello.asm
-![2lab04](2lab04.jpg)
+
+![2lab04](https://github.com/user-attachments/assets/2dc72728-caf5-479c-876e-f2abac91fdc7)
 
 Открыла этот файл с помощью текстового редактора, например, geditgedit hello.asm и ввела в него следующий текст: ; hello.asmSECTION.data;Начало секции данных hello: DB 'Hello world!',10 ; 'Helloworld!' плюс;символ перевода строки helloLen: EQU $-hello ;
 Длина строки hello SECTION .text ; Начало секции кода GLOBAL_start_start: ;
@@ -119,7 +121,9 @@ hello.asm с именем lab4.asm
 8Ввела полный вариант командной строки:
 Выполнила следующую команду: nasm -o obj.o -f elf -g -l list.lst hello.asm
 
-![3lab04](3lab04.jpg)
+
+
+![3lab04](https://github.com/user-attachments/assets/6cc754e4-e269-4e52-ae13-1d5f9a4cd5e0)
 
 С помощью команды ls проверила, что файлы были созданы.
 Далее выполнила следующую команду: ld -melf_i386 obj.o-omain
