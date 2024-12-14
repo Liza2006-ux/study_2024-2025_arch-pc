@@ -151,6 +151,7 @@ survive.
 синтаксис для фрагментов кода. Общий формат огражденных блоков кода: ``` language your code goes in here ```, я ввела эту команду.
 
 
+![5lab03](https://github.com/user-attachments/assets/fa0a8ca7-67b2-4d47-9652-005c94e2c38e)
 
 
 Я ввела ормула sin2 (x) + cos2 (x) = 1, которая записывается так:
