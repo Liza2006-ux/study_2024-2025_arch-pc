@@ -112,6 +112,7 @@ climax of ferocity, and the victor was not yet in sight. In this barren and desi
 land, only the small or the swift or the fierce could flourish, or even hope to
 survive.
 
+![1lab03](https://github.com/user-attachments/assets/5f330aab-d698-4ab0-80f7-df8fac2060e7)
 
 
 Далее я упорядоченный список отформатировала с помощью
@@ -120,6 +121,7 @@ survive.
 1.Sub-instruction
 1. Sub-instruction
 1. Second instruction
+![2lab03](https://github.com/user-attachments/assets/c8036d90-5857-4954-81b1-d40c69203e39)
 
 
 Потом вложила один список в другой, далее добавила отступ для
@@ -128,6 +130,7 @@ survive.
 1. Second instruction
 1. Third instruction
 
+![3lab03](https://github.com/user-attachments/assets/a04dd9b9-42d3-4932-886d-f0be53ada664)
 
 Я отформатировала неупорядоченный (маркированный) список с
 помощью звездочек или тире:
@@ -139,12 +142,14 @@ survive.
 - List item A
 - List item B
 - List item 2
+![4lab03](https://github.com/user-attachments/assets/31f8e0fc-a596-4cda-ac44-5cb7f46816a5)
 
 Так как синтаксис Markdown для встроенной ссылки состоит из части
 [link text], представляющей текст гиперссылки, и части (file-name.md) – URL- адреса или имени файла, на который дается ссылка:
 [link text](file-name.md) или [link text](http://example.com/ "Необязательная
 подсказка"). Я ввела эти ссылки. Теория: Огражденные блоки кода — это простой способ выделить
 синтаксис для фрагментов кода. Общий формат огражденных блоков кода: ``` language your code goes in here ```, я ввела эту команду.
+
 
 
 
@@ -155,47 +160,21 @@ $\sin^2 (x) + \cos^2 (x) = 1$
 $$ \sin^2 (x) + \cos^2 (x) = 1 $$ {#eq:eq1}
 Смотри формулу (`[-@eq:eq1]`).
 
+![6lab03](https://github.com/user-attachments/assets/44446c86-ac88-4199-8dc9-fca2a8c90e42)
 
 
 В конце преобразовала файл README.md таким образом: pandoc
 README.md -o README.pdf
 
+![7lab03](https://github.com/user-attachments/assets/c6141ef0-17c4-424a-bafb-1f760ae389d3)
 
 
- Перешла в каталог курса сформированный при выполнении лабораторной работы
-№2:
-cd ~/work/study/2023-2024/"Архитектура компьютера"/arch-pc/
-Обновила локальный репозиторий, скачав изменения из удаленного репозитория с помощью команды
-git pull
-2. Перешла в каталог с шаблоном отчета по лабораторной работе № 3
-cd ~/work/study/2023-2024/"Архитектура компьютера"/arch-pc/labs/lab03/report
-3. Провела компиляцию шаблона с использованием Makefile. Для этого ввела команду
-make
-При успешной компиляции должны сгенерироваться файлы report.pdf и report.docx.
-Открыла и проверила корректность полученных файлов.
-4. Удалила полученный файлы с использованием Makefile. Для этого введите команду
-make clean
-Проверила, что после этой команды файлы report.pdf и report.docx были удалены.
-5. Открыла файл report.md c помощью любого текстового редактора, например gedit
-gedit report.md
-Внимательно изучила структуру этого файла.
-6. Заполнилаотчет и скомпилируйте отчет с использованием Makefile. 
-Проверила корректность полученных файлов. 
-7. Загрузила файлы на Github.
-cd ~/work/study/2023-2024/"Архитектура компьютера"/arch-pc
-git add .
-git commit -am 'feat(main): add files lab-3'
-git push
+ 
 3.5. Задание для самостоятельной работы
 1. В соответствующем каталоге сделала по лабораторной работе № 2 в формате
 Markdown. В качестве отчёта предоставила отчёты в 3 форматах: pdf, docx
 и md.
 2. Загрузила файлы на github.
-
-![flower](image/flower.jpg)
-
-Описываются проведённые действия, в качестве иллюстрации даётся ссылка на иллюстрацию (рис. [-@fig:001]).
-
 
 # Выводы
 
