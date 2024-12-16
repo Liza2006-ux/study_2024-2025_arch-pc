@@ -246,7 +246,12 @@ WHERE (r.Days = 14 OR e.Days = 14)
 
 
 
+Eur -создание таблицы
+![5406633673089999788](https://github.com/user-attachments/assets/bcd07661-4862-45e0-b086-ea93d75a4e60)
+
+Rus - создание таблицы
     
+![5406633673089999789](https://github.com/user-attachments/assets/dd5575f4-3df3-4bbe-b555-012c742822b4)
 
 
 Проверила данные на пропуски и дубликаты.
