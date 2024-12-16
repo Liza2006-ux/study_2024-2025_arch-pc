@@ -20,6 +20,18 @@ https://www.db-fiddle.com/f/u5ekzMZFW7dq2D2Nz8FgTn/11
 Есть таблица оператора, который может подобрать тур по России или по Европе. 
 Связь с таблицами Россия и Европа у оператора идёт по столбцу город ("City"). 
 Доступ к подробной информации таблиц у оператора идёт через "Tour" Rus или Eur
+\
+
+![distinct](https://github.com/user-attachments/assets/a70c3510-e686-431b-a043-9a708e4e894f)
+
+![Rus](https://github.com/user-attachments/assets/42810454-1e42-42c2-8f2f-495e41190b84)
+
+
+
+
+
+
+
 
 CREATE TABLE `Operator` (
     `Country`	VARCHAR(512),
@@ -81,6 +93,7 @@ INSERT INTO `Eur` (`Rating`, `City`, `Days`, `People`, `Avia`, `Viza`, `Sea`, `P
 INSERT INTO `Eur` (`Rating`, `City`, `Days`, `People`, `Avia`, `Viza`, `Sea`, `Price`, `Sold`) VALUES ('5', 'Chicago', '14', '2', 'y', 'y', 'n', '1500', '70 ');
 
 
+![table](https://github.com/user-attachments/assets/b038cadd-2344-4d2e-a7e4-428ecf555f02)
 
 
  Пример запроса для получения информации о турах по России и Европе, доступных оператору
@@ -114,6 +127,7 @@ ON
 
 
 Проверила данные на пропуски и дубликаты.
+![distinct](https://github.com/user-attachments/assets/ff87c095-281d-460d-b9b7-dd59ba95674b)
 
 Вопросы:
 1.
