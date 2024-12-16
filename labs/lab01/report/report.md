@@ -258,6 +258,9 @@ WHERE r.Days = 7
   AND e.City IS NULL;
 
 
+6
+Надо написать запрос к Operator, чтобы вывести вообще все туры кроме России (Tour != Rus, Tour = Eur) без визы (Viza = 'n') и цена от 500 (Price > 500)
+
 
 Eur -создание таблицы
 ![5406633673089999788](https://github.com/user-attachments/assets/bcd07661-4862-45e0-b086-ea93d75a4e60)
