@@ -92,8 +92,7 @@ INSERT INTO `Eur` (`Rating`, `City`, `Days`, `People`, `Avia`, `Viza`, `Sea`, `P
 ![table](https://github.com/user-attachments/assets/b038cadd-2344-4d2e-a7e4-428ecf555f02)
 
 
-1
--- Пример запроса для получения информации о турах по России и Европе, доступных оператору
+1 Пример запроса для получения информации о турах по России и Европе, доступных оператору
 
 SELECT 
     O.OperatorName,
@@ -181,7 +180,7 @@ WHERE
 
 
     3
-    -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, где будет море (Sea = y), но без перелета (Avia = n)
+ Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, где будет море (Sea = y), но без перелета (Avia = n)
 
 SELECT 
     O.Country,
@@ -235,7 +234,7 @@ WHERE
 
 
     4
-    -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, чтобы отдохнуть где угодно на 14 дней (Days = 14), только не в Чикаго (City != Chicago)
+ Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, чтобы отдохнуть где угодно на 14 дней (Days = 14), только не в Чикаго (City != Chicago)
 
 SELECT o.Country, o.City, o.Tour
 FROM Operator o
