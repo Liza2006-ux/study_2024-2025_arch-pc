@@ -246,6 +246,19 @@ WHERE (r.Days = 14 OR e.Days = 14)
 
 
 
+5
+ Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus, но не Tour != Eur, на 7 дней (Days = 7), где продаж от 140 (Sold >= 140)
+
+SELECT o.Country, o.City, o.Tour
+FROM Operator o
+JOIN Rus r ON o.City = r.City AND o.Tour = 'Rus'
+LEFT JOIN Eur e ON o.City = e.City AND o.Tour = 'Eur'
+WHERE r.Days = 7
+  AND r.Sold >= 140
+  AND e.City IS NULL;
+
+
+
 Eur -создание таблицы
 ![5406633673089999788](https://github.com/user-attachments/assets/bcd07661-4862-45e0-b086-ea93d75a4e60)
 
