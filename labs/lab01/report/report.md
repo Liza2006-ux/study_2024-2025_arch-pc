@@ -25,9 +25,8 @@ https://www.db-fiddle.com/f/u5ekzMZFW7dq2D2Nz8FgTn/11
 
 ![table](https://github.com/user-attachments/assets/88af8763-228b-49aa-bb9e-412fd3a2ef99)
 
-
-
-
+Код содания таблиц с заявленными столбцами и наполнение данными, для `Operator` 12 строк, для `Rus` - 6 и для `Eur` - тоже 6 (может быть больше).
+Текстовые переменные имеют длинны строки 512 символов, остальные - целые числа.
 
 CREATE TABLE `Operator` (
     `Country`	VARCHAR(512),
@@ -91,6 +90,12 @@ INSERT INTO `Eur` (`Rating`, `City`, `Days`, `People`, `Avia`, `Viza`, `Sea`, `P
 
 ![table](https://github.com/user-attachments/assets/b038cadd-2344-4d2e-a7e4-428ecf555f02)
 
+Результат создания таблицы Eur:
+![5406633673089999788](https://github.com/user-attachments/assets/bcd07661-4862-45e0-b086-ea93d75a4e60)
+
+Результат создания таблицы: Rus 
+    
+![5406633673089999789](https://github.com/user-attachments/assets/dd5575f4-3df3-4bbe-b555-012c742822b4)
 
 1 Пример запроса для получения информации о турах по России и Европе, доступных оператору
 
@@ -262,15 +267,8 @@ WHERE r.Days = 7
 Надо написать запрос к Operator, чтобы вывести вообще все туры кроме России (Tour != Rus, Tour = Eur) без визы (Viza = 'n') и цена от 500 (Price > 500)
 
 
-Eur -создание таблицы
-![5406633673089999788](https://github.com/user-attachments/assets/bcd07661-4862-45e0-b086-ea93d75a4e60)
 
-Rus - создание таблицы
-    
-![5406633673089999789](https://github.com/user-attachments/assets/dd5575f4-3df3-4bbe-b555-012c742822b4)
-
-
-Проверила данные на пропуски и дубликаты.
+Проверка данных на пропуски и дубликаты реализована следующим кодом:
 ![distinct](https://github.com/user-attachments/assets/ff87c095-281d-460d-b9b7-dd59ba95674b)
 
 SELECT DISTINCT o.Country, o.City, o.Tour
