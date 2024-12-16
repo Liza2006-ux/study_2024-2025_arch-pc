@@ -94,7 +94,8 @@ INSERT INTO `Eur` (`Rating`, `City`, `Days`, `People`, `Avia`, `Viza`, `Sea`, `P
 ![table](https://github.com/user-attachments/assets/b038cadd-2344-4d2e-a7e4-428ecf555f02)
 
 
- Пример запроса для получения информации о турах по России и Европе, доступных оператору
+ -- Пример запроса для получения информации о турах по России и Европе, доступных оператору
+
 SELECT 
     O.OperatorName,
     O.City AS OperatorCity,
@@ -109,7 +110,6 @@ ON
     O.City = R.City
 
 UNION ALL
-
 SELECT 
     O.OperatorName,
     O.City AS OperatorCity,
@@ -125,10 +125,8 @@ ON
 
 
 
-   
-    
-      -- Пример запроса к таблице Operator, 
-    где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, на одного (где People = 1) и дешевле 750 (где Price < 750)
+
+    -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, на одного (где People = 1) и дешевле 750 (где Price < 750)
 
 SELECT 
     O.Country,
@@ -178,6 +176,71 @@ WHERE
     O.Tour = 'Eur' 
     AND E.People = 1 
     AND E.Price < 750;
+
+
+
+
+    -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, где будет море (Sea = y), но без перелета (Avia = n)
+
+SELECT 
+    O.Country,
+    O.City,
+    O.Tour,
+    R.Rating,
+    R.City AS TourCity,
+    R.Days,
+    R.People,
+    R.Avia,
+    R.Sea,
+    R.Price,
+    R.Sold
+FROM 
+    Operator O
+JOIN 
+    Rus R
+ON 
+    O.City = R.City
+WHERE 
+    O.Tour = 'Rus' 
+    AND R.Sea = 'y' 
+    AND R.Avia = 'n'
+
+UNION ALL
+
+SELECT 
+    O.Country,
+    O.City,
+    O.Tour,
+    E.Rating,
+    E.City AS TourCity,
+    E.Days,
+    E.People,
+    E.Avia,
+    E.Viza,
+    E.Sea,
+    E.Price,
+    E.Sold
+FROM 
+    Operator O
+JOIN 
+    Eur E
+ON 
+    O.City = E.City
+WHERE 
+    O.Tour = 'Eur' 
+    AND E.Sea = 'y' 
+    AND E.Avia = 'n';
+
+
+
+    -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, чтобы отдохнуть где угодно на 14 дней (Days = 14), только не в Чикаго (City != Chicago)
+
+SELECT o.Country, o.City, o.Tour
+FROM Operator o
+JOIN Rus r ON o.City = r.City AND o.Tour = 'Rus'
+JOIN Eur e ON o.City = e.City AND o.Tour = 'Eur'
+WHERE (r.Days = 14 OR e.Days = 14)
+  AND o.City != 'Chicago';
 
 
 
