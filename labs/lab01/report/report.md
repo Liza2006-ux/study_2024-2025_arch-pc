@@ -273,5 +273,25 @@ Rus - создание таблицы
 Проверила данные на пропуски и дубликаты.
 ![distinct](https://github.com/user-attachments/assets/ff87c095-281d-460d-b9b7-dd59ba95674b)
 
-Вопросы:
-1.
+SELECT DISTINCT o.Country, o.City, o.Tour
+FROM Operator o
+JOIN Rus r ON o.City = r.City AND o.Tour = 'Rus'
+JOIN Eur e ON o.City = e.City AND o.Tour = 'Eur'
+WHERE o.Country IS NOT NULL
+  AND o.City IS NOT NULL
+  AND o.Tour IS NOT NULL
+  AND r.Rating IS NOT NULL
+  AND r.Days IS NOT NULL
+  AND r.People IS NOT NULL
+  AND r.Avia IS NOT NULL
+  AND r.Sea IS NOT NULL
+  AND r.Price IS NOT NULL
+  AND r.Sold IS NOT NULL
+  AND e.Rating IS NOT NULL
+  AND e.Days IS NOT NULL
+  AND e.People IS NOT NULL
+  AND e.Avia IS NOT NULL
+  AND e.Viza IS NOT NULL
+  AND e.Sea IS NOT NULL
+  AND e.Price IS NOT NULL
+  AND e.Sold IS NOT NULL;
