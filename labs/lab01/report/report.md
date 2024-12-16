@@ -22,8 +22,10 @@ https://www.db-fiddle.com/f/u5ekzMZFW7dq2D2Nz8FgTn/11
 ![Rus](https://github.com/user-attachments/assets/42810454-1e42-42c2-8f2f-495e41190b84)
 
 
+![Eur — копия](https://github.com/user-attachments/assets/5825504c-dca9-4e5a-8ea4-f0a9aef53227)
 
 
+![table](https://github.com/user-attachments/assets/88af8763-228b-49aa-bb9e-412fd3a2ef99)
 
 
 
