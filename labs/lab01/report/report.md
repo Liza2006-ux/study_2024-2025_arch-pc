@@ -233,6 +233,7 @@ WHERE
 
 
 
+    4
     -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, чтобы отдохнуть где угодно на 14 дней (Days = 14), только не в Чикаго (City != Chicago)
 
 SELECT o.Country, o.City, o.Tour
@@ -241,6 +242,7 @@ JOIN Rus r ON o.City = r.City AND o.Tour = 'Rus'
 JOIN Eur e ON o.City = e.City AND o.Tour = 'Eur'
 WHERE (r.Days = 14 OR e.Days = 14)
   AND o.City != 'Chicago';
+![4пример](https://github.com/user-attachments/assets/6cbe7684-e832-40b1-94d8-91ac0f1cd035)
 
 
 
