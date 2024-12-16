@@ -15,16 +15,12 @@
 
 
 https://www.db-fiddle.com/f/u5ekzMZFW7dq2D2Nz8FgTn/11
-Выполнение проекта
-Таблица по турам в Европу и по России,  в которой преведены страны по Европе и города, города по России, 
+Выполнение проекта.
 Есть таблица оператора, который может подобрать тур по России или по Европе. 
 Связь с таблицами Россия и Европа у оператора идёт по столбцу город ("City"). 
-Доступ к подробной информации таблиц у оператора идёт через "Tour" Rus или Eur
-\
-
-![distinct](https://github.com/user-attachments/assets/a70c3510-e686-431b-a043-9a708e4e894f)
-
+Доступ к подробной информации таблиц у оператора идёт через "Tour" Rus или Eur.
 ![Rus](https://github.com/user-attachments/assets/42810454-1e42-42c2-8f2f-495e41190b84)
+
 
 
 
@@ -124,6 +120,63 @@ JOIN
     TourEur E
 ON 
     O.City = E.City;
+
+
+
+    -- Пример запроса к таблице Operator, где необходимо вывести вообще все туры из Tour = Rus и Tour = Eur, на одного (где People = 1) и дешевле 750 (где Price < 750)
+
+SELECT 
+    O.Country,
+    O.City,
+    O.Tour,
+    R.Rating,
+    R.City AS TourCity,
+    R.Days,
+    R.People,
+    R.Avia,
+    R.Sea,
+    R.Price,
+    R.Sold
+FROM 
+    Operator O
+JOIN 
+    Rus R
+ON 
+    O.City = R.City
+WHERE 
+    O.Tour = 'Rus' 
+    AND R.People = 1 
+    AND R.Price < 750
+
+UNION ALL
+
+SELECT 
+    O.Country,
+    O.City,
+    O.Tour,
+    E.Rating,
+    E.City AS TourCity,
+    E.Days,
+    E.People,
+    E.Avia,
+    E.Viza,
+    E.Sea,
+    E.Price,
+    E.Sold
+FROM 
+    Operator O
+JOIN 
+    Eur E
+ON 
+    O.City = E.City
+WHERE 
+    O.Tour = 'Eur' 
+    AND E.People = 1 
+    AND E.Price < 750;
+
+
+
+    
 
 
 Проверила данные на пропуски и дубликаты.
