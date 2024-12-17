@@ -293,3 +293,5 @@ WHERE o.Country IS NOT NULL
   AND e.Sea IS NOT NULL
   AND e.Price IS NOT NULL
   AND e.Sold IS NOT NULL;
+  ![таблица](https://github.com/user-attachments/assets/98b28db6-3700-4c41-ab98-bb8d113b5141)
+
