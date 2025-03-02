@@ -1,0 +1,492 @@
+<h1 id="цель-работы">Цель работы</h1>
+<p>Целью данной работы является приобретение практических навыков
+установки операционной системы на виртуальную машину, настройки
+минимально необходимых для дальнейшей работы сервисов.</p>
+<h1 id="указания-к-работе">Указания к работе</h1>
+<p>Техническое обеспечение Лабораторная работа подразумевает установку
+на виртуальную машину VirtualBox (https://www.virtualbox.org/)
+операционной системы Linux (дистрибутив Fedora). Выполнение работы
+возможно как в дисплейном классе факультета физико-математических и
+естественных наук РУДН, так и дома. Описание выполнения работы приведено
+для дисплейного класса со следующими характеристиками техники: Intel
+Core i3-550 3.2 GHz, 4 GB оперативной памяти, 80 GB свободного места на
+жёстком диске; ОС Linux Gentoo (http://www.gentoo.ru/); VirtualBox
+версии 7.0 или новее. Для установки в виртуальную машину используется
+дистрибутив Linux Fedora (https://getfedora.org), вариант с менеджером
+окон sway (https://fedoraproject.org/spins/sway/). При выполнении
+лабораторной работы на своей технике вам необходимо скачать необходимый
+образ операционной системы
+(https://fedoraproject.org/spins/sway/download/index.html). В дисплейных
+классах можно воспользоваться образом в каталоге
+/afs/dk.sci.pfu.edu.ru/common/files/iso. Для определённости в описании
+будем использовать версию Fedora-Sway-Live-x86_64-41-1.4.iso.</p>
+<h1 id="домашнее-задание">Домашнее задание</h1>
+<p>Дождитесь загрузки графического окружения и откройте терминал. В окне
+терминала проанализируйте последовательность загрузки системы, выполнив
+команду dmesg. Можно просто просмотреть вывод этой команды:</p>
+<p>dmesg | less Можно использовать поиск с помощью grep:</p>
+<p>dmesg | grep -i “то, что ищем” Получите следующую информацию. Версия
+ядра Linux (Linux version). Частота процессора (Detected Mhz processor).
+Модель процессора (CPU0). Объём доступной оперативной памяти (Memory
+available). Тип обнаруженного гипервизора (Hypervisor detected). Тип
+файловой системы корневого раздела. Последовательность монтирования
+файловых систем.</p>
+<h1 id="соглашения-об-именовании">Соглашения об именовании</h1>
+<p>При выполнении работ следует придерживаться следующих правил
+именования:</p>
+<p>Пользователь внутри виртуальной машины должен иметь имя, совпадающее
+с учётной записью студента, выполняющего лабораторную работу. Имя хоста
+вашей виртуальной машины должно совпадать с учётной записью студента,
+выполняющего лабораторную работу. Имя виртуальной машины должно
+совпадать с учётной записью студента, выполняющего лабораторную работу.
+В дисплейных классах вы можете посмотреть имя вашей учётной записи,
+набрав в терминале команду:</p>
+<p>id -un При установке на своей технике необходимо использовать имя
+вашей учётной записи дисплейных классов. Например, если студента зовут
+Остап Сулейманович Бендер, то его учётная запись имеет вид osbender.</p>
+<h1 id="последовательность-выполнения-работы">Последовательность
+выполнения работы</h1>
+<p>Варианты создания образа виртуальной машины Предлагается несколько
+вариантов установки ОС Linux на основе следующих программных эмуляторов:
+qemu; virtualbox.</p>
+<p>Установка Linux на qemu Общая информация</p>
+<p>Данный вариант установки возможен, если у Вас установлено программное
+обеспечение Qemu (https://www.qemu.org/). Выполнение в дисплейном
+классе</p>
+<p>Загрузила в дисплейном классе операционную систему Linux. Осуществите
+вход в систему. Настройка каталога для виртуальных машин</p>
+<p>Запустила терминал. Перейдите в каталог /var/tmp: <img
+src="https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/lab1scr1.JPG"
+alt="lab1scr1.JPG" /></p>
+<p>cd /var/tmp Создала каталог с именем пользователя (совпадающий с
+логином студента в дисплейном классе). Для этого использовала команду:
+mkdir /var/tmp/<code>id -un</code> Дальнейшую работу проводитла в этом
+каталоге. Создание образа Создадим образ виртуального диска: 60GB,
+формат qcow2: qemu-img create -f qcow2 fedora-sway.qcow2 60G Запустила
+виртуальную машину: qemu-system-x86_64 -boot menu=on -m 2048 -cpu max
+-smp 4<br />
+-cdrom Fedora-Sway-Live-x86_64-41-1.4.iso<br />
+-drive
+file=fedora-sway.qcow2,format=qcow2,if=virtio,aio=native,cache=none<br />
+-bios /usr/share/edk2-ovmf/OVMF_CODE.fd<br />
+-enable-kvm -machine q35 -device intel-iommu<br />
+-device virtio-balloon<br />
+-chardev
+qemu-vdagent,id=vdagent0,name=vdagent,clipboard=on,mouse=off<br />
+-display default,show-cursor=on<br />
+-vga none -device virtio-gpu-pci Видео-устройств подключено на
+видеокарту компьютера. Выберите Start Fedora-Sway-Live 41. Загрузится
+графический режим. Включила Passthrough mode. Установила систему. После
+установки виртуальной машины Для удобства создала командный файл
+fedora-sway-start.sh: touch fedora-sway-start.sh chmod +x
+fedora-sway-start.sh В файл записала команду для запуска: #!/bin/bash
+d81b8)</p>
+<p>qemu-system-x86_64 -boot menu=on<br />
+-m 2048 -mem-path /dev/hugepages<br />
+-cpu max -smp 4<br />
+-drive
+file=fedora-sway.qcow2,format=qcow2,if=virtio,aio=native,cache=none<br />
+-bios /usr/share/edk2-ovmf/OVMF_CODE.fd<br />
+-enable-kvm -machine q35 -device intel-iommu<br />
+-device virtio-balloon<br />
+-device virtio-serial<br />
+-chardev spicevmc,id=vdagent,debug=0,name=vdagent<br />
+-device virtserialport,chardev=vdagent,name=com.redhat.spice.0<br />
+-chardev
+qemu-vdagent,id=vdagent0,name=vdagent,clipboard=on,mouse=on<br />
+-display default,show-cursor=on<br />
+-vga none -device virtio-gpu-pci Видео: Установка Linux на qemu</p>
+<p>RuTube: Установка Linux на qemu</p>
+<p>Платформа: Установка Linux на qemu</p>
+<p>VKvideo: Установка Linux на qemu</p>
+<p>Youtube: Установка Linux на qemu</p>
+<h1 id="установка-linux-на-virtualbox">Установка Linux на
+Virtualbox</h1>
+<p>Загрузила в дисплейном классе операционную систему Linux. Осуществила
+вход в систему. Настройка каталога для виртуальных машин Создание
+необходимых каталогов Запустила терминал. Перешла в каталог
+/var/tmp:</p>
+<p>cd /var/tmp Я создайла каталог с именем пользователя (совпадающий с
+логином студента в дисплейном классе). Для этого можно использовать
+команду:</p>
+<p>mkdir /var/tmp/<code>id -un</code> Проверила в свойствах VirtualBox
+месторасположение каталога для виртуальных машин:
+/var/tmp/имя_пользователя Здесь имя_пользователя — логин (учётная
+запись) студента в дисплейном классе. edvolchkova Значения по умолчанию
+Linux: $HOME/VirtualBox VMs. Графический интерфейс</p>
+<p>В меню выбрала Файл, Настройки. Выберите Общие, поле Папка для машин
+по умолчанию. Установила новое значение, например
+/var/tmp/имя_пользователя. Нажала ОК, чтобы сохранить изменения.
+Командная строка</p>
+<p><img
+src="https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/lab1scr2.JPG"
+alt="lab1scr2.JPG" /> Задала отображение информации о настройках
+VirtualBox на английском. Задала кодировку для отображения свойств
+VirtualBox:</p>
+<p>vboxmanage setproperty language C Установила папку для виртуальных
+машине в /var/tmp/имя_пользователя:</p>
+<p>vboxmanage setproperty machinefolder /var/tmp/$(id -un) Поверила, что
+папка виртуальных машин по умолчанию изменена:</p>
+<p>vboxmanage list systemproperties | grep “Default machine folder:”
+Следующая команда выдаст только каталог:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/d870506e-4ec0-47c3-b9ee-e228802b19a8"
+alt="lab1scr2" />
+<figcaption aria-hidden="true">lab1scr2</figcaption>
+</figure>
+<p>vboxmanage list systemproperties | grep “Default machine folder:” |
+cut -d”:” -f2 | tr -d ’ ’ Установочный образ</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/e1d14f85-2504-47c0-8c75-b4cb3eabb1fa"
+alt="lab1scr2" />
+<figcaption aria-hidden="true">lab1scr2</figcaption>
+</figure>
+<p>Перенесла установочный образ в папку
+/var/tmp/имя_пользователя/iso:</p>
+<p>mkdir -p “<span class="math inline">$(vboxmanage list
+systemproperties | grep 'Default machine folder:' | cut -d':' -f2 | tr
+-d ' ')/iso" mv Fedora-Sway-Live-x86_64-39-1.5.iso "$</span>(vboxmanage
+list systemproperties | grep ‘Default machine folder:’ | cut -d’:’ -f2 |
+tr -d ’ ’)/iso” Настройка хост-клавиши</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/0d9d6584-18e3-452a-bf39-9ab411c41ac0"
+alt="lab1scr4" />
+<figcaption aria-hidden="true">lab1scr4</figcaption>
+</figure>
+<p>Хост-клавишей по умолчанию является правый Ctrl. По умолчанию в
+дисплейных классах на клавише правый Ctrl находится переключатель языка
+ввода. Эти значения могут конфликтовать. Графический интерфейс</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/b3729d2d-aa69-4844-83c2-ff31d0d870ee"
+alt="lab1scr5" />
+<figcaption aria-hidden="true">lab1scr5</figcaption>
+</figure>
+<p>В меню выберала Файл, Настройки. Выбрала Ввод, вкладка Виртуальная
+машина. Выберала Сочетание клавиш в строке Хост-комбинация. Нажмите
+новое сочетание клавиш. Нажмала ОК, чтобы сохранить изменения. Командная
+строка Проверила текущую комбинацию для хост-клавиши: VBoxManage
+getextradata global GUI/Input/HostKeyCombination По умолчанию
+установлена комбинация 65508, соответствующая правой клавише Ctrl.
+Установила нужную клавишу (в примере клавиша Menu): VBoxManage
+setextradata global GUI/Input/HostKeyCombination 65383 Комбинации клавиш
+можно, например, посмотреть на странице
+https://pythonhosted.org/pyglet/api/pyglet.window.key-module.html.
+Создание виртуальной машины</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/0fd0d604-0048-48b1-8094-2dd9db5e0383"
+alt="lab1scr6" />
+<figcaption aria-hidden="true">lab1scr6</figcaption>
+</figure>
+<p>Для использования графического интерфейса запустила менеджер
+виртуальных машин, введя в командной строке: VirtualBox &amp; Создайте
+новую виртуальную машину в графическом интерфейсе или в командной
+строке.</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/5df6cdd8-64e0-47b8-b1f3-f69a44b76b0c"
+alt="lab1scr7" />
+<figcaption aria-hidden="true">lab1scr7</figcaption>
+</figure>
+<p>В командной строке:</p>
+<p>vboxmanage createvm –name “$(id -un)_os-intro” –ostype Fedora_64
+–register Указала имя виртуальной машины (ваш логин в дисплейном
+классе), тип операционной системы — Linux, Fedora. Указала размер
+основной памяти виртуальной машины — от 2048 МБ.</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/38e1015d-0e6d-448e-abc5-e2ad0c19f6a1"
+alt="lab1scr8" />
+<figcaption aria-hidden="true">lab1scr8</figcaption>
+</figure>
+<p>В командной строке:</p>
+<p>vboxmanage modifyvm “$(id -un)_os-intro” –memory 2048 –acpi on –nic1
+nat Задала конфигурацию жёсткого диска — загрузочный, VDI (VirtualBox
+Disk Image), динамический виртуальный диск.</p>
+<p>Задала размер диска — 80 ГБ (или больше), его расположение — в данном
+случае /var/tmp/имя_пользователя/имя_машины/имя_машины.vdi.</p>
+<p>В командной строке:</p>
+<p>vboxmanage createhd –filename “<span
+class="math inline">(<em>v</em><em>b</em><em>o</em><em>x</em><em>m</em><em>a</em><em>n</em><em>a</em><em>g</em><em>e</em><em>l</em><em>i</em><em>s</em><em>t</em><em>s</em><em>y</em><em>s</em><em>t</em><em>e</em><em>m</em><em>p</em><em>r</em><em>o</em><em>p</em><em>e</em><em>r</em><em>t</em><em>i</em><em>e</em><em>s</em>|<em>g</em><em>r</em><em>e</em><em>p</em>′<em>D</em><em>e</em><em>f</em><em>a</em><em>u</em><em>l</em><em>t</em><em>m</em><em>a</em><em>c</em><em>h</em><em>i</em><em>n</em><em>e</em><em>f</em><em>o</em><em>l</em><em>d</em><em>e</em><em>r</em>:′|<em>c</em><em>u</em><em>t</em>−<em>d</em>′:′−<em>f</em>2|<em>t</em><em>r</em>−<em>d</em>′′)/</span>(id
+-un)_os-intro/$(id -un)_os-intro.vdi” –size 80000 Выбрала в VirtualBox
+Вашей виртуальной машины. Добавьте новый привод оптических дисков и
+выберите образ.</p>
+<p>В командной строке:</p>
+<p>Подключила загрузку с DVD:</p>
+<p>vboxmanage modifyvm “$(id -un)_os-intro” –boot1 dvd Добавьте
+IDE-контроллер:</p>
+<p>vboxmanage storagectl “$(id -un)_os-intro” –name “IDE Controller”
+–add ide –controller PIIX4 Установила созданный вами файл VDI в качестве
+первого виртуального жесткого диска новой виртуальной машины:</p>
+<p>vboxmanage storageattach “<span class="math inline">$(id
+-un)_os-intro" --storagectl "IDE Controller" --port 0 --device 0 --type
+hdd --medium "$</span>(vboxmanage list systemproperties | grep ‘Default
+machine folder:’ | cut -d’:’ -f2 | tr -d ’ ’)/<span
+class="math inline">(<em>i</em><em>d</em>−<em>u</em><em>n</em>)<sub><em>o</em></sub><em>s</em> − <em>i</em><em>n</em><em>t</em><em>r</em><em>o</em>/</span>(id
+-un)_os-intro.vdi” Подключила к виртуальной машине ISO-файл:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/4c116a09-008d-41c2-8c7f-3121ce9e02a8"
+alt="lab1scr9" />
+<figcaption aria-hidden="true">lab1scr9</figcaption>
+</figure>
+<p>vboxmanage storageattach “<span class="math inline">$(id
+-un)_os-intro" --storagectl "IDE Controller" --port 0 --device 1 --type
+dvddrive --medium "$</span>(vboxmanage list systemproperties | grep
+‘Default machine folder:’ | cut -d’:’ -f2 | tr -d ’
+’)/iso/Fedora-Sway-Live-x86_64-39-1.5.iso” При установке на собственной
+технике использовала скачанный образ операционной системы Fedora. В
+качестве графического контроллера поставьте VMSVGA.</p>
+<p>В командной строке:</p>
+<p>vboxmanage modifyvm “$(id -un)_os-intro” –graphicscontroller=vmsvga
+Включила ускорение 3D.</p>
+<p>В командной строке: vboxmanage modifyvm “<span
+class="math inline">$(id -un)_os-intro" --accelerate-3d=on Если есть
+проблемы при отображении, загрузитесь в режиме базовой графики. Включила
+общий буфер обмена и перетаскивание объектов между хостом и гостевой ОС.
+В командной строке: vboxmanage modifyvm "$</span>(id -un)_os-intro”
+–clipboard-mode=bidirectional –drag-and-drop=bidirectional Включила
+поддержку UEFI. В командной строке: vboxmanage modifyvm “$(id
+-un)_os-intro” –firmware=efi Установка драйверов для VirtualBox Вошла в
+ОС под заданной вами при установке учётной записью. Нажала комбинацию
+Win+Enter для запуска терминала. Запустила терминальный мультиплексор
+tmux:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/53a1800e-d84d-4b19-b140-0e3bbf8a2d20"
+alt="lab1scr10" />
+<figcaption aria-hidden="true">lab1scr10</figcaption>
+</figure>
+<p>tmux Переключила на роль супер-пользователя:</p>
+<p>sudo -i Установила средства разработки:</p>
+<p>dnf -y group install development-tools Установите пакет DKMS:</p>
+<p>dnf -y install dkms В меню виртуальной машины подключила образ диска
+дополнений гостевой ОС. Подмонтируйте диск:</p>
+<p>mount /dev/sr0 /media Установите драйвера:</p>
+<p>/media/VBoxLinuxAdditions.run Перегрузила виртуальную машину:</p>
+<p>reboot Подключила общей папки</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/a2ddf1d0-f3ba-4afd-b2f4-a3124b97b2a0"
+alt="lab1scr11" />
+<figcaption aria-hidden="true">lab1scr11</figcaption>
+</figure>
+<p>Внутри виртуальной машины добавила своего пользователя в группу
+vboxsf (вместо username укажите ваш логин):</p>
+<p>gpasswd -a username vboxsf В хостовой системе подключите разделяемую
+папку:</p>
+<p>vboxmanage sharedfolder add “$(id -un)_os-intro” –name=work
+–hostpath=work –automount Перегрузите виртуальную машину:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/bba0277d-cae6-48f4-9f6b-8bc58e783972"
+alt="lab1scr12" />
+<figcaption aria-hidden="true">lab1scr12</figcaption>
+</figure>
+<p>reboot Папка будет монтироваться в /media/sf_work.</p>
+<p>Установка операционной системы</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/67f5eaaf-5f94-4bde-aad4-c0f6a141b42c"
+alt="lab1scr13" />
+<figcaption aria-hidden="true">lab1scr13</figcaption>
+</figure>
+<p>Запуск приложения для установки системы Загрузила LiveCD. Появился
+интерфейс начальной конфигурации. Нажала Enter для создания конфигурации
+по умолчанию. Нажала Enter, чтобы выбрать в качестве модификатора
+клавишу Win (она же клавиша Super). В файле конфигурации эта клавиша
+будет обозначена как $Mod. Нажмите комбинацию Win+Enter для запуска
+терминала. В терминале запустите liveinst. Для перехода к раскладке окон
+с табами нажала Win+w.</p>
+<h1 id="установка-системы-на-диск">Установка системы на диск</h1>
+<p>Выбрала язык интерфейса и перейдите к настройкам установки
+операционной системы. При необходимости скорректировала часовой пояс,
+раскладку клавиатуры (рекомендуется в качестве языка по умолчанию
+указать английский язык). Место установки ОС оставилабез изменения.
+Установилаимя и пароль для пользователя root. Установила имя и пароль
+для Вашего пользователя. Задала сетевое имя Вашего компьютера. После
+завершения установки операционной системы корректно перезапустите
+виртуальную машину. В VirtualBox оптический диск должен отключиться
+автоматически, но если это не произошло, то необходимо отключить
+носитель информации с образом.</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/8ef8a05c-413b-4219-9757-f6ae624338c4"
+alt="lab1scr14" />
+<figcaption aria-hidden="true">lab1scr14</figcaption>
+</figure>
+<p>Видео: Установка операционной системы RuTube: Установка операционной
+системы Youtube: Установка операционной системы После установки Войдите
+в ОС под заданной вами при установке учётной записью. Нажмите комбинацию
+Win+Enter для запуска терминала. Переключитесь на роль
+супер-пользователя: sudo -i Обновления</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/9d70cf2d-d21d-4017-bc4d-560bd4cd6a12"
+alt="lab1scr15" />
+<figcaption aria-hidden="true">lab1scr15</figcaption>
+</figure>
+<p>Установите средства разработки:</p>
+<p>sudo dnf -y group install development-tools Обновить все пакеты</p>
+<p>sudo dnf -y update</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/b07fec39-3b22-47ae-9c40-cc4f4e71ac95"
+alt="lab1scr16" />
+<figcaption aria-hidden="true">lab1scr16</figcaption>
+</figure>
+<p>Повышение комфорта работы Программы для удобства работы в
+консоли:</p>
+<p>sudo dnf -y install tmux mc Другой вариант консоли:</p>
+<p>sudo dnf -y install kitty</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/b6d25c2b-6ce8-41cb-83e3-1c8d7b7d89d2"
+alt="lab1scr17" />
+<figcaption aria-hidden="true">lab1scr17</figcaption>
+</figure>
+<p>Автоматическое обновление Установка программного обеспечения:</p>
+<p>sudo dnf -y install dnf-automatic Задала необходимую конфигурацию в
+файле /etc/dnf/automatic.conf. Запустила таймер:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/973951ac-77f0-4ff9-9c6b-05afe1ce087c"
+alt="lab1scr18" />
+<figcaption aria-hidden="true">lab1scr18</figcaption>
+</figure>
+<p>sudo systemctl enable –now dnf-automatic.timer</p>
+<p>Отключение SELinux В данном курсе мы не будем рассматривать работу с
+системой безопасности SELinux. Поэтому отключила его. В файле
+/etc/selinux/config замените значение</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/71a988d6-b9d8-4bc8-b926-fc00c03d699f"
+alt="lab1scr19" />
+<figcaption aria-hidden="true">lab1scr19</figcaption>
+</figure>
+<p>SELINUX=enforcing на значение</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/06a8e42d-b6e0-4106-9aa7-b76cef7e34e2"
+alt="lab1scr20" />
+<figcaption aria-hidden="true">lab1scr20</figcaption>
+</figure>
+<p>SELINUX=permissive Перегрузила виртуальную машину:</p>
+<p>sudo systemctl reboot</p>
+<p>Настройка раскладки клавиатуры Вошла в ОС под заданной вами при
+установке учётной записью. Нажмала комбинацию Win+Enter для запуска
+терминала. Запустила терминальный мультиплексор tmux:</p>
+<p>tmux Создала конфигурационный файл
+~/.config/sway/config.d/95-system-keyboard-config.conf:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/82d1e75e-5c0c-4278-a45a-044f740984cf"
+alt="lab1scr21" />
+<figcaption aria-hidden="true">lab1scr21</figcaption>
+</figure>
+<p>mkdir -p ~/.config/sway touch
+~/.config/sway/config.d/95-system-keyboard-config.conf Отредактировала
+конфигурационный файл
+~/.config/sway/config.d/95-system-keyboard-config.conf:</p>
+<p>exec_always /usr/libexec/sway-systemd/locale1-xkb-config –oneshot
+Переключила на роль супер-пользователя:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/c8834fa1-ac11-419f-ad4a-4f26f931a7a7"
+alt="lab1scr22" />
+<figcaption aria-hidden="true">lab1scr22</figcaption>
+</figure>
+<p>sudo -i Отредактировала конфигурационный файл
+/etc/X11/xorg.conf.d/00-keyboard.conf:</p>
+<p>Section “InputClass” Identifier “system-keyboard” MatchIsKeyboard
+“on” Option “XkbLayout” “us,ru” Option “XkbVariant” “,winkeys” Option
+“XkbOptions” “grp:rctrl_toggle,compose:ralt,terminate:ctrl_alt_bksp”
+EndSection Использовала файловый менеджер mc и его встроенный редактор.
+Перегрузила виртуальную машину: sudo systemctl reboot</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/78cc0ea2-2a23-41d8-9c40-edd889a79137"
+alt="lab1scr23" />
+<figcaption aria-hidden="true">lab1scr23</figcaption>
+</figure>
+<h1 id="установка-имени-пользователя-и-названия-хоста">Установка имени
+пользователя и названия хоста</h1>
+<p>Запустила виртуальную машину и залогиньтесь. Нажала комбинацию
+Win+Enter для запуска терминала. Запустила терминальный мультиплексор
+tmux:</p>
+<p>tmux Переключила на роль супер-пользователя:</p>
+<p>sudo -i Создала пользователя (вместо username укажите ваш логин в
+дисплейном классе):</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/8c2a352b-0653-4455-af79-1d527fcab307"
+alt="lab1scr24" />
+<figcaption aria-hidden="true">lab1scr24</figcaption>
+</figure>
+<p>adduser -G wheel username Задала пароль для пользователя (вместо
+username укажите ваш логин в дисплейном классе):</p>
+<p>passwd username Установите имя хоста (вместо username укажите ваш
+логин в дисплейном классе):</p>
+<p>hostnamectl set-hostname username Проверила, что имя хоста
+установлено верно:</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/f7b6fe05-3b10-4e4a-b3d5-d65658527f1e"
+alt="lab1scr25" />
+<figcaption aria-hidden="true">lab1scr25</figcaption>
+</figure>
+<p>hostnamectl</p>
+<p>Видео: Имя пользователя и хоста RuTube: Имя пользователя и хоста</p>
+<p>Youtube: Имя пользователя и хоста</p>
+<p>Установка программного обеспечения для создания документации Нажмала
+комбинацию Win+Enter для запуска терминала. Запустила терминальный
+мультиплексор tmux:</p>
+<p>tmux Переключилась на роль супер-пользователя:</p>
+<p>sudo -i</p>
+<p>Работа с языком разметки Markdown Средство pandoc для работы с языком
+разметки Markdown. Установка с помощью менеджера пакетов:</p>
+<p>sudo dnf -y install pandoc Для работы с перекрёстными ссылками мы
+использовала пакет pandoc-crossref. Пакет pandoc-crossref в стандартном
+репозитории отсутствует. При установке pandoc-crossref следует обращать
+внимание, для какой версии pandoc он скомпилён. Лучше установить pandoc
+и pandoc-crossref вручную. Скачайте необходимую версию pandoc-crossref
+(https://github.com/lierdakil/pandoc-crossref/releases). Посмотрела, для
+какой версии откомпилён pandoc-crossref. Скачала соответствующую версию
+pandoc (https://github.com/jgm/pandoc/releases). Распаковала архивы. Обе
+программы собраны в виде статически-линкованных бинарных файлов.
+Поместила их в каталог /usr/local/bin.</p>
+<figure>
+<img
+src="https://github.com/user-attachments/assets/52757ed6-fadf-4ac3-b29b-7567ce1f593d"
+alt="lab1scr26" />
+<figcaption aria-hidden="true">lab1scr26</figcaption>
+</figure>
+<p>texlive Установила дистрибутив TeXlive:</p>
+<p>sudo dnf -y install texlive-scheme-full</p>
+<h1 id="список-литературы.">Список литературы.</h1>
+<ol type="1">
+<li>Dash, P. Getting Started with Oracle VM VirtualBox / P. Dash. –
+Packt Publishing Ltd, 2013. – 86 сс.</li>
+<li>Colvin, H. VirtualBox: An Ultimate Guide Book on Virtualization with
+VirtualBox. VirtualBox / H. Colvin. – CreateSpace Independent Publishing
+Platform, 2015. – 70 сс.</li>
+<li>Vugt, S. van. Red Hat RHCSA/RHCE 7 cert guide : Red Hat Enterprise
+Linux 7 (EX200 and EX300) : Certification Guide. Red Hat RHCSA/RHCE 7
+cert guide / S. van Vugt. – Pearson IT Certification, 2016. – 1008
+сс.</li>
+<li>Робачевский, А. Операционная система UNIX / А. Робачевский, С.
+Немнюгин, О. Стесик. – 2-е изд. – Санкт-Петербург : БХВ-Петербург, 2010.
+– 656 сс.</li>
+<li>Немет, Э. Unix и Linux: руководство системного администратора. Unix
+и Linux / Э. Немет, Г. Снайдер, Т.Р. Хейн, Б. Уэйли. – 4-е изд. –
+Вильямс, 2014. – 1312 сс.</li>
+<li>Колисниченко, Д.Н. Самоучитель системного администратора Linux :
+Системный администратор / Д.Н. Колисниченко. – Санкт-Петербург :
+БХВ-Петербург, 2011. – 544 сс.</li>
+<li>Robbins, A. Bash Pocket Reference / A. Robbins. – O’Reilly Media,
+2016. – 156 сс. :::</li>
+</ol>
