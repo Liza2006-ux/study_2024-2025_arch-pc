@@ -126,6 +126,7 @@ virtualbox.
 
 Запустила терминал. Перейдите в каталог /var/tmp:
 ![lab1scr1.JPG](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/lab1scr1.JPG)
+
 cd /var/tmp
 Создала каталог с именем пользователя (совпадающий с логином студента в дисплейном классе).
 Для этого использовала команду:
@@ -155,6 +156,7 @@ touch fedora-sway-start.sh
 chmod +x fedora-sway-start.sh
 В файл записала команду для запуска:
 #!/bin/bash
+d81b8)
 
 qemu-system-x86_64 -boot menu=on \
    -m 2048 -mem-path /dev/hugepages \
@@ -204,7 +206,7 @@ Linux: $HOME/VirtualBox VMs.
 Нажала ОК, чтобы сохранить изменения.
 Командная строка
 
-
+![lab1scr2.JPG](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/lab1scr2.JPG)
 Задала отображение информации о настройках VirtualBox на английском.
 Задала кодировку для отображения свойств VirtualBox:
 
@@ -217,8 +219,14 @@ vboxmanage setproperty machinefolder /var/tmp/$(id -un)
 vboxmanage list systemproperties | grep "Default machine folder:"
 Следующая команда выдаст только каталог:
 
+
+![lab1scr2](https://github.com/user-attachments/assets/d870506e-4ec0-47c3-b9ee-e228802b19a8)
+
+
 vboxmanage list systemproperties | grep "Default machine folder:" | cut -d":" -f2 | tr -d ' '
 Установочный образ
+
+![lab1scr2](https://github.com/user-attachments/assets/e1d14f85-2504-47c0-8c75-b4cb3eabb1fa)
 
 Перенесла установочный образ в папку /var/tmp/имя_пользователя/iso:
 
@@ -226,10 +234,14 @@ mkdir -p "$(vboxmanage list systemproperties | grep 'Default machine folder:' | 
 mv Fedora-Sway-Live-x86_64-39-1.5.iso "$(vboxmanage list systemproperties | grep 'Default machine folder:' | cut -d':' -f2 | tr -d ' ')/iso"
 Настройка хост-клавиши
 
+![lab1scr4](https://github.com/user-attachments/assets/0d9d6584-18e3-452a-bf39-9ab411c41ac0)
+
 Хост-клавишей по умолчанию является правый Ctrl.
 По умолчанию в дисплейных классах на клавише правый Ctrl находится переключатель языка ввода.
 Эти значения могут конфликтовать.
 Графический интерфейс
+
+![lab1scr5](https://github.com/user-attachments/assets/b3729d2d-aa69-4844-83c2-ff31d0d870ee)
 
 В меню выберала Файл, Настройки.
 Выбрала Ввод, вкладка Виртуальная машина.
@@ -245,15 +257,21 @@ VBoxManage setextradata global GUI/Input/HostKeyCombination 65383
 Комбинации клавиш можно, например, посмотреть на странице https://pythonhosted.org/pyglet/api/pyglet.window.key-module.html.
 Создание виртуальной машины
 
+![lab1scr6](https://github.com/user-attachments/assets/0fd0d604-0048-48b1-8094-2dd9db5e0383)
+
 Для использования графического интерфейса запустила менеджер виртуальных машин, введя в командной строке:
 VirtualBox &
 Создайте новую виртуальную машину в графическом интерфейсе или в командной строке.
+
+![lab1scr7](https://github.com/user-attachments/assets/5df6cdd8-64e0-47b8-b1f3-f69a44b76b0c)
 
 В командной строке:
 
 vboxmanage createvm --name "$(id -un)_os-intro" --ostype Fedora_64 --register
 Указала имя виртуальной машины (ваш логин в дисплейном классе), тип операционной системы — Linux, Fedora.
 Указала размер основной памяти виртуальной машины — от 2048 МБ.
+
+![lab1scr8](https://github.com/user-attachments/assets/38e1015d-0e6d-448e-abc5-e2ad0c19f6a1)
 
 В командной строке:
 
@@ -280,6 +298,8 @@ vboxmanage storagectl "$(id -un)_os-intro" --name "IDE Controller" --add ide --c
 vboxmanage storageattach "$(id -un)_os-intro" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "$(vboxmanage list systemproperties | grep 'Default machine folder:' | cut -d':' -f2 | tr -d ' ')/$(id -un)_os-intro/$(id -un)_os-intro.vdi"
 Подключила к виртуальной машине ISO-файл:
 
+![lab1scr9](https://github.com/user-attachments/assets/4c116a09-008d-41c2-8c7f-3121ce9e02a8)
+
 vboxmanage storageattach "$(id -un)_os-intro" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium "$(vboxmanage list systemproperties | grep 'Default machine folder:' | cut -d':' -f2 | tr -d ' ')/iso/Fedora-Sway-Live-x86_64-39-1.5.iso"
 При установке на собственной технике использовала скачанный образ операционной системы Fedora.
 В качестве графического контроллера поставьте VMSVGA.
@@ -303,6 +323,8 @@ vboxmanage modifyvm "$(id -un)_os-intro" --firmware=efi
 Нажала комбинацию Win+Enter для запуска терминала.
 Запустила терминальный мультиплексор tmux:
 
+![lab1scr10](https://github.com/user-attachments/assets/53a1800e-d84d-4b19-b140-0e3bbf8a2d20)
+
 tmux
 Переключила на роль супер-пользователя:
 
@@ -325,6 +347,8 @@ mount /dev/sr0 /media
 reboot
 Подключила общей папки
 
+![lab1scr11](https://github.com/user-attachments/assets/a2ddf1d0-f3ba-4afd-b2f4-a3124b97b2a0)
+
 Внутри виртуальной машины добавила своего пользователя в группу vboxsf (вместо username укажите ваш логин):
 
 gpasswd -a username vboxsf
@@ -333,10 +357,14 @@ gpasswd -a username vboxsf
 vboxmanage sharedfolder add "$(id -un)_os-intro" --name=work --hostpath=work --automount
 Перегрузите виртуальную машину:
 
+![lab1scr12](https://github.com/user-attachments/assets/bba0277d-cae6-48f4-9f6b-8bc58e783972)
+
 reboot
 Папка будет монтироваться в /media/sf_work.
 
 Установка операционной системы
+
+![lab1scr13](https://github.com/user-attachments/assets/67f5eaaf-5f94-4bde-aad4-c0f6a141b42c)
 
 Запуск приложения для установки системы
 Загрузила LiveCD.
@@ -358,6 +386,8 @@ reboot
 После завершения установки операционной системы корректно перезапустите виртуальную машину.
 В VirtualBox оптический диск должен отключиться автоматически, но если это не произошло, то необходимо отключить носитель информации с образом.
 
+![lab1scr14](https://github.com/user-attachments/assets/8ef8a05c-413b-4219-9757-f6ae624338c4)
+
 Видео: Установка операционной системы
 RuTube: Установка операционной системы
 Youtube: Установка операционной системы
@@ -367,12 +397,17 @@ Youtube: Установка операционной системы
 Переключитесь на роль супер-пользователя:
 sudo -i
 Обновления
+
+![lab1scr15](https://github.com/user-attachments/assets/9d70cf2d-d21d-4017-bc4d-560bd4cd6a12)
+
 Установите средства разработки:
 
 sudo dnf -y group install development-tools
 Обновить все пакеты
 
 sudo dnf -y update
+
+![lab1scr16](https://github.com/user-attachments/assets/b07fec39-3b22-47ae-9c40-cc4f4e71ac95)
 
 Повышение комфорта работы
 Программы для удобства работы в консоли:
@@ -382,12 +417,16 @@ sudo dnf -y install tmux mc
 
 sudo dnf -y install kitty
 
+![lab1scr17](https://github.com/user-attachments/assets/b6d25c2b-6ce8-41cb-83e3-1c8d7b7d89d2)
+
 Автоматическое обновление
 Установка программного обеспечения:
 
 sudo dnf -y install dnf-automatic
 Задала необходимую конфигурацию в файле /etc/dnf/automatic.conf.
 Запустила таймер:
+
+![lab1scr18](https://github.com/user-attachments/assets/973951ac-77f0-4ff9-9c6b-05afe1ce087c)
 
 sudo systemctl enable --now dnf-automatic.timer
 
@@ -396,8 +435,12 @@ sudo systemctl enable --now dnf-automatic.timer
 Поэтому отключила его.
 В файле /etc/selinux/config замените значение
 
+![lab1scr19](https://github.com/user-attachments/assets/71a988d6-b9d8-4bc8-b926-fc00c03d699f)
+
 SELINUX=enforcing
 на значение
+
+![lab1scr20](https://github.com/user-attachments/assets/06a8e42d-b6e0-4106-9aa7-b76cef7e34e2)
 
 SELINUX=permissive
 Перегрузила виртуальную машину:
@@ -412,12 +455,16 @@ sudo systemctl reboot
 tmux
 Создала конфигурационный файл ~/.config/sway/config.d/95-system-keyboard-config.conf:
 
+![lab1scr21](https://github.com/user-attachments/assets/82d1e75e-5c0c-4278-a45a-044f740984cf)
+
 mkdir -p ~/.config/sway
 touch ~/.config/sway/config.d/95-system-keyboard-config.conf
 Отредактировала конфигурационный файл ~/.config/sway/config.d/95-system-keyboard-config.conf:
 
 exec_always /usr/libexec/sway-systemd/locale1-xkb-config --oneshot
 Переключила на роль супер-пользователя:
+
+![lab1scr22](https://github.com/user-attachments/assets/c8834fa1-ac11-419f-ad4a-4f26f931a7a7)
 
 sudo -i
 Отредактировала конфигурационный файл /etc/X11/xorg.conf.d/00-keyboard.conf:
@@ -433,6 +480,8 @@ EndSection
 Перегрузила виртуальную машину:
 sudo systemctl reboot
 
+![lab1scr23](https://github.com/user-attachments/assets/78cc0ea2-2a23-41d8-9c40-edd889a79137)
+
 # Установка имени пользователя и названия хоста
 Запустила виртуальную машину и залогиньтесь.
 Нажала  комбинацию Win+Enter для запуска терминала.
@@ -444,6 +493,8 @@ tmux
 sudo -i
 Создала пользователя (вместо username укажите ваш логин в дисплейном классе):
 
+![lab1scr24](https://github.com/user-attachments/assets/8c2a352b-0653-4455-af79-1d527fcab307)
+
 adduser -G wheel username
 Задала пароль для пользователя (вместо username укажите ваш логин в дисплейном классе):
 
@@ -452,6 +503,8 @@ passwd username
 
 hostnamectl set-hostname username
 Проверила, что имя хоста установлено верно:
+
+![lab1scr25](https://github.com/user-attachments/assets/f7b6fe05-3b10-4e4a-b3d5-d65658527f1e)
 
 hostnamectl
 
@@ -485,6 +538,8 @@ sudo dnf -y install pandoc
 Распаковала архивы.
 Обе программы собраны в виде статически-линкованных бинарных файлов.
 Поместила их в каталог /usr/local/bin.
+
+![lab1scr26](https://github.com/user-attachments/assets/52757ed6-fadf-4ac3-b29b-7567ce1f593d)
 
 texlive
 Установила дистрибутив TeXlive:
