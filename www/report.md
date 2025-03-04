@@ -68,16 +68,16 @@ header-includes:
 # Этапы реализации проекта:
 Я разместила на Github pages заготовки для персонального сайта.
 
-![1scr-project](https://github.com/user-attachments/assets/44be1069-b0fc-43a4-ade3-00888f7a919b)
+![1scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/www/1scr-project.jpg)
 
 Затем установила необходимое программное обеспечение.
 Потом скачала шаблон темы сайта.
 
-![2scr-project](https://github.com/user-attachments/assets/d92f9ad8-4819-49dd-b02b-c7252d33440b)
+![2scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/www/2scr-project.jpg)
 
 Далее разместила его на хостинге git.
 И установила параметр для URLs сайта.
 
-![3scr-project](https://github.com/user-attachments/assets/e14d8c8f-d792-44d7-af9b-dc17a9822802)
+![3scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/www/3scr-project.jpg)
 
 Заготовка сайта на Github pages готова!
