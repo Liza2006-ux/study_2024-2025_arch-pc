@@ -66,15 +66,18 @@ header-includes:
   - \floatplacement{figure}{H} # keep figures where there are in the text
 ---
 # Этапы реализации проекта:
-Я разместила  на Github pages заготовки для персонального сайта.
+Я разместила на Github pages заготовки для персонального сайта.
+
 ![1scr-project](https://github.com/user-attachments/assets/44be1069-b0fc-43a4-ade3-00888f7a919b)
 
-Затем установила  необходимое программное обеспечение.
-Потом скачала  шаблон темы сайта.
+Затем установила необходимое программное обеспечение.
+Потом скачала шаблон темы сайта.
+
 ![2scr-project](https://github.com/user-attachments/assets/d92f9ad8-4819-49dd-b02b-c7252d33440b)
 
-Далее разместила  его на хостинге git.
-И установила параметр  для URLs сайта.
+Далее разместила его на хостинге git.
+И установила параметр для URLs сайта.
+
 ![3scr-project](https://github.com/user-attachments/assets/e14d8c8f-d792-44d7-af9b-dc17a9822802)
 
-В конце разместила   заготовку сайта на Github pages.
+Заготовка сайта на Github pages готова!
