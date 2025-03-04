@@ -1,6 +1,6 @@
 ---
 ## Front matter
-title: "Отчёт по первому этапу ирндивидуального проекта"
+title: "Отчёт по лабораторной работе №1"
 subtitle: "Операционные системы"
 author: "Волчкова Eлизавета Дмитриевна"
 
@@ -65,6 +65,7 @@ header-includes:
   - \usepackage{float} # keep figures where there are in the text
   - \floatplacement{figure}{H} # keep figures where there are in the text
 ---
+
 # Этапы реализации проекта:
 Я разместила на Github pages заготовки для персонального сайта.
 
