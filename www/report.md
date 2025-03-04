@@ -74,11 +74,11 @@ header-includes:
 Затем установила необходимое программное обеспечение.
 Потом скачала шаблон темы сайта.
 
-![2scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/www/2scr-project.jpg)
+![2scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/2scr-project.jpg)
 
 Далее разместила его на хостинге git.
 И установила параметр для URLs сайта.
 
-![3scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/www/3scr-project.jpg)
+![3scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/3scr-project.jpg)
 
 Заготовка сайта на Github pages готова!
