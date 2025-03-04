@@ -69,7 +69,7 @@ header-includes:
 # Этапы реализации проекта:
 Я разместила на Github pages заготовки для персонального сайта.
 
-![1scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/blob/master/www/1scr-project.jpg)
+![1scr-project](https://github.com/Liza2006-ux/study_2024-2025_arch-pc/1scr-project.jpg)
 
 Затем установила необходимое программное обеспечение.
 Потом скачала шаблон темы сайта.
