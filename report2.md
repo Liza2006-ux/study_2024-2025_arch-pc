@@ -189,14 +189,19 @@ git push
 
 # Работа с локальным репозиторием
 Создадим локальный репозиторий.
+![lab2scr1](https://github.com/user-attachments/assets/b8de8d87-3175-47a5-b10f-d29674d7b2a7)
+
 Сначала сделаем предварительную конфигурацию, указав имя и email владельца репозитория:
+
 
 git config --global user.name "Имя Фамилия"
 git config --global  user.email "work@mail"
 Настроим utf-8 в выводе сообщений git:
+![lab2scr2](https://github.com/user-attachments/assets/9f46a49f-aa2c-4bbd-9533-c00d5895818e)
 
 git config --global quotepath false
 Для инициализации локального репозитория, расположенного, например, в каталоге ~/tutorial, необходимо ввести в командной строке:
+![lab2scr3](https://github.com/user-attachments/assets/6693b03c-d7b1-4792-b1b1-ad81b18948cb)
 
 cd 
 mkdir tutorial
@@ -209,12 +214,13 @@ echo 'hello world' > hello.txt
 git add hello.txt
 git commit -am 'Новый файл'
 Воспользуемся командой status для просмотра изменений в рабочем каталоге, сделанных с момента последней ревизии:
-
+![lab2scr5](https://github.com/user-attachments/assets/d0353647-99d8-48b7-b970-ae4a3d99a734)
 git status
 Во время работы над проектом так или иначе могут создаваться файлы, которые не требуется добавлять в последствии в репозиторий. Например, временные файлы, создаваемые редакторами, или объектные файлы, создаваемые компиляторами. Можно прописать шаблоны игнорируемых при добавлении в репозиторий типов файлов в файл .gitignore с помощью сервисов. Для этого сначала нужно получить список имеющихся шаблонов:
 
 curl -L -s https://www.gitignore.io/api/list
 Затем скачать шаблон, например, для C и C++
+![lab2scr6](https://github.com/user-attachments/assets/0eb80882-f092-44bd-8247-54c60dc4af23)
 
 curl -L -s https://www.gitignore.io/api/c >> .gitignore
 curl -L -s https://www.gitignore.io/api/c++ >> .gitignore
@@ -233,6 +239,7 @@ cat ~/.ssh/id_rsa.pub | xclip -sel clip
 Вставила ключ в появившееся на сайте поле.
 
 После этого можно создала на сайте репозиторий, выбрав в меню , дала ему название и сделала общедоступным (публичным).
+![lab2scr7](https://github.com/user-attachments/assets/fbcecc43-f2c4-4384-9fe8-06b9dd12bd1e)
 
 Для загрузки репозитория из локального каталога на сервер выполнила следующие команды:
 
@@ -246,6 +253,7 @@ git push -u origin master
 
 Первичная настройка параметров git
 Задала Лиза и email владельца репозитория:
+![lab2scr8](https://github.com/user-attachments/assets/bab083b6-da98-45b4-83f5-6f57b3f95675)
 
 git config --global user.name "Name Surname"
 git config --global user.email "work@mail"
@@ -272,6 +280,7 @@ git ls-files --eol
 core.autocrlf true: конвертация CRLF->LF при коммите и обратно LF->CRLF при выгрузке кода из репозитория на файловую систему (обычно используется в Windows).
 core.autocrlf input: конвертация CRLF->LF только при коммитах (используются в MacOS/Linux).
 Варианты конвертации
+![lab2scr9](https://github.com/user-attachments/assets/654d278f-4f57-48be-a045-3cc9459028e7)
 
 Таблица 1.: Варианты конвертации для разных значений параметра core.autocrlf
 core.autocrlf	false	input	true
@@ -373,6 +382,7 @@ ssh-keygen -p
 
 # Добавление SSH-ключа в учётную запись GitHub
 Скопировала созданный SSH-ключ в буфер обмена командой:
+![lab1scr26](https://github.com/user-attachments/assets/3b6daa69-9788-482a-93cc-6721b3988a60)
 
 xclip -i < ~/.ssh/id_ed25519.pub
 Открыла настройки своего аккаунта на GitHub и перешла в раздел SSH and GPC keys.
@@ -394,61 +404,6 @@ committer (коммитер) — пользователь, который зак
 Для подписывания коммитов используется технология PGP (см. Работа с PGP).
 Подпись коммита позволяет удостовериться в том, кто является коммитером. Авторство не проверяется.
 
-# Создание ключа
-Генерируем ключ
-
-gpg --full-generate-key
-Из предложенных опций выбираем:
-
-тип RSA and RSA;
-размер 4096;
-выбралае срок действия; значение по умолчанию — 0 (срок действия не истекает никогда).
-GPG запросит личную информацию, которая сохранится в ключе:
-Имя (не менее 5 символов).
-Адрес электронной почты.
-При вводе email убедитлась, что он соответствует адресу, используемому на GitHub.
-Комментарий. Ввела, и нажала клавишу ввода, чтобы оставить это поле пустым.
-
-Экспорт ключа
-Выводим список ключей и копируем отпечаток приватного ключа:
-
-gpg --list-secret-keys --keyid-format LONG
-Отпечаток ключа — это последовательность байтов, используемая для идентификации более длинного, по сравнению с самим отпечатком ключа.
-Формат строки:
-
-sec   Алгоритм/Отпечаток_ключа Дата_создания [Флаги] [Годен_до]
-      ID_ключа
-Экспортируем ключ в формате ASCII по его отпечатку:
-
-gpg --armor --export <PGP Fingerprint>
-
-Добавление PGP ключа в GitHub
-Скопировала ключ и добавила его в настройках профиля на GitHub (или GitLab).
-Cкопируйте ваш сгенерированный PGP ключ в буфер обмена:
-
-gpg --armor --export <PGP Fingerprint> | xclip -sel clip
-Перешла в настройки GitHub (https://github.com/settings/keys), нажала на кнопку New GPG key и вставила полученный ключ в поле ввода.
-
-Подписывание коммитов git
-Подпись коммитов при работе через терминал:
-
-git commit -a -S -m 'your commit message'
-Флаг -S означает создание подписанного коммита. При этом может потребоваться ввод кодовой фразы, заданной при генерации GPG-ключа.
-
-Настройка автоматических подписей коммитов git
-Используя введёный email, укажите Git применять его при подписи коммитов:
-
-git config --global user.signingkey <PGP Fingerprint>
-git config --global commit.gpgsign true
-git config --global gpg.program $(which gpg2)
-
-Проверка коммитов в Git
-GitHub и GitLab будут показывать значок Verified рядом с вашими новыми коммитами.
-
-Режим бдительности (vigilant mode)
-На GitHub есть настройка vigilant mode.
-Все неподписанные коммиты будут явно помечены как Unverified.
-Включается это в настройках в разделе SSH and GPG keys. Установила метку на Flag unsigned commits as unverified.
 
 # Задание
 Создать базовую конфигурацию для работы с git.
