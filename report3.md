@@ -190,11 +190,12 @@ https://github.com/lierdakil/pandoc-crossref/releases.
 Можно использовать следующий Makefile
 1 FILES = $(patsubst %.md, %.docx, $(wildcard *.md))
 2 FILES += $(patsubst %.md, %.pdf, $(wildcard *.md))
-3
+3![lab3scr1](https://github.com/user-attachments/assets/ddd4dcc8-0a89-46a5-b6a6-802ae36235c9)
+
 4 LATEX_FORMAT =
 5
 6 FILTER = --filter pandoc-crossref
-7
+7![lab3scr2](https://github.com/user-attachments/assets/a935f99d-0e4d-4a82-a584-2ccae7066350)
 8 %.docx: %.md
 9 -pandoc "$<" $(FILTER) -o "$@"
 10
@@ -208,6 +209,10 @@ https://github.com/lierdakil/pandoc-crossref/releases.
 18 -rm $(FILES) *~
 36 Лабораторная работа № 3. Markdown
 
+
+![lab3scr3](https://github.com/user-attachments/assets/e3e809dc-6545-435e-b39e-9922636b3be0)
+
+![Uploading lab3scr4.JPG…]()
 
 # Заключение. 
 Целью работы было научиться оформлять отчёты с помощью легковесного языка разметки Markdown, проделав данные задания - я смогла научиться оформлать таким форпматот отчёты.
