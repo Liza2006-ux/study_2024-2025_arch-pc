@@ -335,6 +335,7 @@ chezmoi data
 
 
 # Выполнение лабораторной работы
+![lab5scr1](https://github.com/user-attachments/assets/08318811-11b7-4be4-a370-f0be852d7274)
 
 
 Менеджер паролей pass
@@ -368,6 +369,7 @@ pass init <gpg-id or email>
 
 Создадим структуру git:
 
+![lab5scr2](https://github.com/user-attachments/assets/c92a49cf-87b1-45e0-bc83-9f39cf5fd73c)
 
 pass git init
 Также можно задать адрес репозитория на хостинге (репозиторий необходимо предварительно создать):
@@ -394,6 +396,7 @@ pass git status
 Для взаимодействия с броузером используется интерфейс native messaging.
 Поэтому кроме плагина к броузеру устанавливается программа, обеспечивающая интерфейс native messaging.
 Плагин browserpass
+![lab5scr3](https://github.com/user-attachments/assets/8d0d85a3-2508-412b-88be-22ee426e0323)
 
 Репозиторий: https://github.com/browserpass/browserpass-extension
 Плагин для брoузера
@@ -414,6 +417,7 @@ dnf install browserpass
 Добавить новый пароль
 
 Выполнила:
+![lab5scr4](https://github.com/user-attachments/assets/d233c878-3eca-4f6e-a959-5e6c4d49e1fd)
 
 pass insert [OPTIONAL DIR]/[FILENAME]
 OPTIONAL DIR: необязательное имя каталога, определяющее файловую структуру для вашего хранилища паролей;
