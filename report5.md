@@ -335,7 +335,7 @@ chezmoi data
 
 
 # Выполнение лабораторной работы
-![lab1scr2](https://github.com/user-attachments/assets/1264d91e-f821-4b5b-a275-e3a7212e3574)
+
 
 Менеджер паролей pass
 
@@ -351,7 +351,7 @@ dnf install gopass
 
 Настройка
 Ключи GPG
-![lab3scr3](https://github.com/user-attachments/assets/07d4cd2d-4edf-46c7-9ce4-35ef595734bb)
+
 
 Просмотр списка ключей:
 
@@ -367,7 +367,7 @@ pass init <gpg-id or email>
 Синхронизация с git
 
 Создадим структуру git:
-![lab2scr5](https://github.com/user-attachments/assets/aee6439d-1a38-439f-82c3-dff25ca433db)
+
 
 pass git init
 Также можно задать адрес репозитория на хостинге (репозиторий необходимо предварительно создать):
