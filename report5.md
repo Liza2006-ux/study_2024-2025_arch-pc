@@ -465,6 +465,7 @@ sh -c "$(wget -qO- chezmoi.io/get)"
 Создала свой репозиторий для конфигурационных файлов на основе шаблона:
 
 gh repo create dotfiles --template="yamadharma/dotfiles-template" --private
+![lab5 scr6](https://github.com/user-attachments/assets/56e134e5-5e78-4f44-b8f3-dcee9618a5b2)
 
 Подключение репозитория к своей системе
 Инициализируйте chezmoi с вашим репозиторием dotfiles:
@@ -491,6 +492,7 @@ chezmoi diff
 
 chezmoi apply -v
 Если вас не устраивают изменения в файле, отредактировала его с помощью:
+![lab5scr7](https://github.com/user-attachments/assets/c404d251-0b40-4d45-b183-0ba62d8b3d95)
 
 chezmoi edit file_name
 Вызвала инструмент слияния, чтобы объединить изменения между текущим содержимым файла, файлом в вашей рабочей копии и измененным содержимым файла:
@@ -529,6 +531,7 @@ chezmoi apply
 Можно автоматически фиксировать и отправлять изменения в исходный каталог в репозиторий.
 Эта функция отключена по умолчанию.
 Чтобы включить её, добавила в файл конфигурации ~/.config/chezmoi/chezmoi.toml следующее:
+![lab5scr8](https://github.com/user-attachments/assets/fbf9a524-b5a1-4c65-9d70-01314dde2983)
 
 [git]
     autoCommit = true
