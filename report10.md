@@ -189,7 +189,9 @@ h l k j
 3. Вызвала vi и создайте файл hello.sh
 1 vi hello.sh
 
-![lab9scr1](https://github.com/user-attachments/assets/eb2c9aeb-b58d-44f2-91af-1548b1d9f35d)
+
+![lab10scr1](https://github.com/user-attachments/assets/3b3a5655-74c4-44ee-aa5b-9f81912d1aa1)
+
 
 
 
@@ -203,7 +205,9 @@ h l k j
 7 echo $HELLO
 8 hello
 
-![lab9scr2](https://github.com/user-attachments/assets/b3a22b48-bcbb-4942-ada8-aaf86f053ff1)
+
+![lab10scr2](https://github.com/user-attachments/assets/c028e531-0f1c-4123-b648-1ae6cef14300)
+
 
 
 6. Нажала клавишу Esc для перехода в командный режим после завершения ввода
@@ -215,7 +219,9 @@ h l k j
 9. Сделала файл исполняемым
 1 chmod +x hello.sh
 
-![lab9scr3](https://github.com/user-attachments/assets/d81cfe12-c9fc-4bd1-8ce4-bb34df99c702)
+
+![lab10scr3](https://github.com/user-attachments/assets/2b8d8763-89b3-4db9-851b-328bcebde372)
+
 
 # Задание 2. 
 Редактирование существующего файла
@@ -225,7 +231,8 @@ h l k j
 3. Перешла в режим вставки и замените на HELLO. Нажмите Esc для возврата в командный режим.
 4. Установила курсор на четвертую строку и сотрите слово LOCAL.
 
-![lab9scr4](https://github.com/user-attachments/assets/85dbc769-5da8-49cb-970c-b971ab9da8ec)
+)![lab10scr5](https://github.com/user-attachments/assets/4c48be84-9b74-44ce-a53e-e140af04beb0)
+
 
 5. 
 6. Перешла в режим вставки и наберите следующий текст: local, нажмите Esc для
@@ -234,7 +241,9 @@ h l k j
 следующий текст: echo $HELLO.
 
 
-![lab9scr5](https://github.com/user-attachments/assets/f8ad6916-2f58-4e3d-8154-260d0c98bf57)
+
+![lab10scr6](https://github.com/user-attachments/assets/01dbdecb-7d15-4222-ae81-dca4c7abb60a)
+
 
 
 
@@ -243,6 +252,8 @@ h l k j
 11. Ввела команду отмены изменений u для отмены последней команды.
 12. Ввела символ : для перехода в режим последней строки. Запишите произведённые
 изменения и выйдите из vi.
+
+![lab10scr7](https://github.com/user-attachments/assets/fbe96888-8557-4a5f-9e1f-cd63d7047851)
 
 #  Вывод работы
 Целью работы было познакомиться с операционной системой Linux. Получить практические навыки работы с редактором vi, установленным по умолчанию практически во всех дистрибутивах, проделав данные задания - я усвоила необходимуб информацию.
