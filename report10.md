@@ -189,6 +189,8 @@ h l k j
 3. Вызвала vi и создайте файл hello.sh
 1 vi hello.sh
 
+![lab9scr1](https://github.com/user-attachments/assets/eb2c9aeb-b58d-44f2-91af-1548b1d9f35d)
+
 
 
 5. Нажала клавишу i и вводите следующий текст.
@@ -201,6 +203,8 @@ h l k j
 7 echo $HELLO
 8 hello
 
+![lab9scr2](https://github.com/user-attachments/assets/b3a22b48-bcbb-4942-ada8-aaf86f053ff1)
+
 
 6. Нажала клавишу Esc для перехода в командный режим после завершения ввода
 текста.
@@ -210,6 +214,9 @@ h l k j
 вашего текста и завершения работы.
 9. Сделала файл исполняемым
 1 chmod +x hello.sh
+
+![lab9scr3](https://github.com/user-attachments/assets/d81cfe12-c9fc-4bd1-8ce4-bb34df99c702)
+
 # Задание 2. 
 Редактирование существующего файла
 1. Вызвала vi на редактирование файла
@@ -218,12 +225,16 @@ h l k j
 3. Перешла в режим вставки и замените на HELLO. Нажмите Esc для возврата в командный режим.
 4. Установила курсор на четвертую строку и сотрите слово LOCAL.
 
+![lab9scr4](https://github.com/user-attachments/assets/85dbc769-5da8-49cb-970c-b971ab9da8ec)
+
 5. 
 6. Перешла в режим вставки и наберите следующий текст: local, нажмите Esc для
 возврата в командный режим.
 7. Установила курсор на последней строке файла. Вставила после неё строку, содержащую
 следующий текст: echo $HELLO.
 
+
+![lab9scr5](https://github.com/user-attachments/assets/f8ad6916-2f58-4e3d-8154-260d0c98bf57)
 
 
 
