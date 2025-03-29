@@ -67,4 +67,19 @@ header-includes:
 ---
 
 
-# Цель работы
+# 4 этап реализвации проекта
+Добавила к сайту ссылки на научные и библиометрические ресурсы.
+
+Зарегистрировалась на соответствующих ресурсах и разместить на них ссылки на сайте:
+eLibrary : https://elibrary.ru/;
+Google Scholar : https://scholar.google.com/;
+ORCID : https://orcid.org/;
+Mendeley : https://www.mendeley.com/;
+ResearchGate : https://www.researchgate.net/;
+Academia.edu : https://www.academia.edu/;
+arXiv : https://arxiv.org/;
+github : https://github.com/.
+Сделала пост по прошедшей неделе.
+Добавила пост на тему по выбору:
+Оформление отчёта.
+Создала презентацию.
